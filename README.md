@@ -14,3 +14,7 @@
   * Stetho
   * Glide
   * Paging 3
+# Demo
+<p>  
+  <code><img width="50%" src="https://github.com/BaiChuanWang2/PokemonGo/blob/main/demo.png"></code>
+</p>
