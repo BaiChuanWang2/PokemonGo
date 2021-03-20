@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.pokemongo.viewmodel.DetailViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/teal_200">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineV01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineV005"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineV09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineV095"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineH02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/lineH08"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="@id/lineV005"
+            app:layout_constraintEnd_toEndOf="@id/lineV095"
+            app:layout_constraintTop_toTopOf="@id/lineH02"
+            app:layout_constraintBottom_toBottomOf="@id/lineH08"
+            app:layout_constrainedWidth="true"
+            app:layout_constrainedHeight="true"/>
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            android:scaleType="fitXY"
+            android:translationZ="100dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv"
+            app:layout_constrainedHeight="true"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintTop_toBottomOf="@id/rv"
+            android:text="@string/hp"
+            android:textColor="@color/red"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/ratio, String.valueOf(viewModel.pokemonInfoItemModel.hp), String.valueOf(viewModel.pokemonInfoItemModel.maxHp))}"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/rv"
+            android:translationZ="100dp"/>
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/pbHp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/tvHp"
+            app:layout_constrainedWidth="true"
+            app:progress_unreached_color="@color/gray_2"
+            app:progress_reached_color="@color/red"
+            app:progress_unreached_bar_height="0.75dp"
+            app:progress_reached_bar_height="1.5dp"
+            app:progress_text_color="@color/red"
+            app:progress_text_size="10sp"
+            app:progress_text_offset="1dp"
+            android:alpha="0.7"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAttack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintTop_toBottomOf="@id/pbHp"
+            android:layout_marginTop="10dp"
+            android:text="@string/attack"
+            android:textColor="@color/yellow"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/ratio, String.valueOf(viewModel.pokemonInfoItemModel.attack), String.valueOf(viewModel.pokemonInfoItemModel.maxAttack))}"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/pbHp"
+            android:layout_marginTop="10dp"
+            android:translationZ="100dp"/>
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/pbAttack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/tvAttack"
+            app:layout_constrainedWidth="true"
+            app:progress_unreached_color="@color/gray_2"
+            app:progress_reached_color="@color/yellow"
+            app:progress_unreached_bar_height="0.75dp"
+            app:progress_reached_bar_height="1.5dp"
+            app:progress_text_color="@color/yellow"
+            app:progress_text_size="10sp"
+            app:progress_text_offset="1dp"
+            android:alpha="0.7"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDefense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintTop_toBottomOf="@id/pbAttack"
+            android:layout_marginTop="10dp"
+            android:text="@string/defense"
+            android:textColor="@color/brown"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/ratio, String.valueOf(viewModel.pokemonInfoItemModel.defense), String.valueOf(viewModel.pokemonInfoItemModel.maxDefense))}"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/pbAttack"
+            android:layout_marginTop="10dp"
+            android:translationZ="100dp"/>
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/pbDefense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/tvDefense"
+            app:layout_constrainedWidth="true"
+            app:progress_unreached_color="@color/gray_2"
+            app:progress_reached_color="@color/brown"
+            app:progress_unreached_bar_height="0.75dp"
+            app:progress_reached_bar_height="1.5dp"
+            app:progress_text_color="@color/brown"
+            app:progress_text_size="10sp"
+            app:progress_text_offset="1dp"
+            android:alpha="0.7"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintTop_toBottomOf="@id/pbDefense"
+            android:layout_marginTop="10dp"
+            android:text="@string/speed"
+            android:textColor="@color/green"
+            android:translationZ="100dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/ratio, String.valueOf(viewModel.pokemonInfoItemModel.speed), String.valueOf(viewModel.pokemonInfoItemModel.maxSpeed))}"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/pbDefense"
+            android:layout_marginTop="10dp"
+            android:translationZ="100dp"/>
+
+        <com.daimajia.numberprogressbar.NumberProgressBar
+            android:id="@+id/pbSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/lineV01"
+            app:layout_constraintEnd_toEndOf="@id/lineV09"
+            app:layout_constraintTop_toBottomOf="@id/tvSpeed"
+            app:layout_constrainedWidth="true"
+            app:progress_unreached_color="@color/gray_2"
+            app:progress_reached_color="@color/green"
+            app:progress_unreached_bar_height="0.75dp"
+            app:progress_reached_bar_height="1.5dp"
+            app:progress_text_color="@color/green"
+            app:progress_text_size="10sp"
+            app:progress_text_offset="1dp"
+            android:alpha="0.7"
+            android:translationZ="100dp"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            android:translationZ="100dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

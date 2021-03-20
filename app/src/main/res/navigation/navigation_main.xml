@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/nav_pokemon">
+
+    <fragment
+        android:id="@+id/nav_pokemon"
+        android:name="com.example.pokemongo.ui.fragment.PokemonFragment">
+        <action
+            android:id="@+id/action_nav_pokemon_to_nav_detail"
+            app:destination="@id/nav_detail"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.example.pokemongo.ui.fragment.DetailFragment">
+    </fragment>
+
+</navigation>
