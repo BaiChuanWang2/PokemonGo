@@ -5,7 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.example.pokemongo.data.api.RetrofitInterface
 import com.example.pokemongo.data.database.AppDataBase
-import com.example.pokemongo.data.remotemediator.PokemonRemoteMediator
+import com.example.pokemongo.data.repository.remotemediator.PokemonRemoteMediator
 
 class PokemonRepository constructor(private val retrofitInterface: RetrofitInterface, private val appDataBase: AppDataBase) {
     @OptIn(ExperimentalPagingApi::class)

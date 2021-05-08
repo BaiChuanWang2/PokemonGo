@@ -1,4 +1,4 @@
-package com.example.pokemongo.data.remotemediator
+package com.example.pokemongo.data.repository.remotemediator
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType

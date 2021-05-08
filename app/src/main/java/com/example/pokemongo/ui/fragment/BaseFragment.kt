@@ -20,8 +20,8 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            (activity as AppCompatActivity).onBackPressed()
+        when (item.itemId) {
+            android.R.id.home -> (activity as AppCompatActivity).onBackPressed()
         }
         return super.onOptionsItemSelected(item)
     }
