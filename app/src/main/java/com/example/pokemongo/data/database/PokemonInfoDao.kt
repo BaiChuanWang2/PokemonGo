@@ -5,12 +5,11 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.pokemongo.data.model.PokemonInfoModel
-import io.reactivex.Single
 
 @Dao
 interface PokemonInfoDao {
     @Query("SELECT * FROM PokemonInfoModel WHERE name LIKE '%' || :name || '%'")
-    fun getPokemonInfo(name: String): Single<PokemonInfoModel>
+    suspend fun getPokemonInfo(name: String): PokemonInfoModel
 
     @Query("SELECT * FROM PokemonInfoModel WHERE name = :name")
     fun getPokemonInfoByName(name: String): PokemonInfoModel?

@@ -8,10 +8,8 @@
   * LiveData
   * Koin
   * Retrofit
-  * RxJava
   * Room
   * Navigation
-  * Stetho
   * Glide
   * Paging 3
   * NumberProgressBar
